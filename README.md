@@ -90,11 +90,11 @@ other's PRs, so use the real GitHub handle, not a nickname.
 
 | Name | GitHub handle | Role |
 |---|---|---|
-| TODO | @todo | TODO |
-| TODO | @todo | TODO |
-| TODO | @todo | TODO |
-| TODO | @todo | TODO |
-| TODO | @todo | TODO |
+| Brady | @TrooperBrady | Documentation Lead |
+| Elijah | @TheElijahSmith | Repo Lead |
+| Colson | @csipe4 | Integration Tester |
+| Kevin | @kcastellanos14 | Review coordinator |
+| Robert | @rpleeseberg | Standup Lead |
 
 **Communication channel:** TODO — where does this team actually talk? (Discord,
 GroupMe, Slack, a text thread — I don't care which, I care that there is one
