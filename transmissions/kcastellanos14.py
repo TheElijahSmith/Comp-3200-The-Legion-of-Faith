@@ -9,7 +9,7 @@ def main():
     print("Fact: I collect rubik cubes, and love to play soccer.")
     
     # Print one problem you'd love deep learning to help solve.
-    print("Problem: I would like to use Deep Learning to create an app that translates sign language to text in real time.")
+    print("Problem: I want to create a model that detects early signs of visual diseases by analyzing scans.")
 
 # Run main() only when this file is executed directly, not when it's imported.
 if __name__ == "__main__":
