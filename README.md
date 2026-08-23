@@ -1,16 +1,9 @@
-# TODO: Your Team Name
+# TODO: Your Team Name: The Legion of Faith
 
 > COMP 3200 — Deep Learning · Fall 2026 · Harding University · Dr. Joe Faith
 > *The Cybernetic Heresy*
 
-> **Read this first — then delete this block.**
-> This README ships deliberately unfinished. Filling it in *is* Assignment 1,
-> Part A: **four of the twenty Week 1 points live on this page** — two for the
-> team name, members and communication channel, two for roles plus a rotation
-> plan. Replace every **TODO** below, delete this blockquote, and open a PR.
-> Once the repo is standing you can drop the numbered setup steps too — but keep
-> the deadline table under them, because it's the only copy in the repo.
-> Everything else on the page is here to stay.
+
 
 ---
 
@@ -80,7 +73,7 @@ your own work.
 
 **TODO:** one or two sentences on who your team is. A team name that means
 something to you beats a clever one that doesn't.
-
+The team name we all decided to go with is "The Legion of Faith". Since we all work in a legion and have faith in one another
 ---
 
 ## The Crew
@@ -99,7 +92,7 @@ other's PRs, so use the real GitHub handle, not a nickname.
 **Communication channel:** TODO — where does this team actually talk? (Discord,
 GroupMe, Slack, a text thread — I don't care which, I care that there is one
 and that everyone is in it.)
-
+We talk over text messages
 ---
 
 ## Roles
@@ -120,6 +113,8 @@ seats for that stretch. Descriptions are from the syllabus.
 **TODO:** roles rotate every few weeks so everyone gets reps in every seat.
 Write down how yours will rotate — how often, and in what order. Two sentences
 is plenty.
+
+We will rotate every 2 weeks and the a person's new role will be the one above them on the list and if there is no one above them they move to the bottom role on the list
 
 > Don't skip this one. The Week 1 rubric grades "roles assigned, documented in
 > README, and rotation plan noted," and the plan is the half people forget.
