@@ -36,4 +36,4 @@ for input in balance:
 
 # the usage of ele_mul is not needed for this version becuase numpy will do elementwise multiplication 
 # when interacting with arrays. It essentially multiplies each element in the array by the input we give it, 
-# removing the need for a loop. It allows us to remove everything from ele_mul from the code alltogether.
+# removing the need for a loop. It allows us to remove everything from ele_mul from the code alltogether
