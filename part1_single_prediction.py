@@ -14,7 +14,7 @@ for angle in blade_angle:
     print(f"Blade Angle: {angle} | Prediction: {pred}")
 
 """
-ANWER TO QUESTIONS
+ANSWER TO QUESTIONS
 
 1. What does the weight do?
    Controls how much influence an input feature has on the output prediction.
