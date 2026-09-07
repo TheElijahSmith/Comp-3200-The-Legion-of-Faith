@@ -79,4 +79,4 @@ for i in blade_angle:
     gradient_descent_alpha(i, .8, .5, .01875, 20)
 
 # The largest alpha I could find that settles down at our goal was .01875. Anything more only got to the goal
-# on the last iteration which didn't feel like it was certain enough for me to prove that it worked.
+# on the last iteration which did not feel like it was certain enough for me to prove that it worked.
