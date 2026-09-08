@@ -83,11 +83,11 @@ other's PRs, so use the real GitHub handle, not a nickname.
 
 | Name | GitHub handle | Role |
 |---|---|---|
-| Brady | @TrooperBrady | Documentation Lead |
-| Elijah | @TheElijahSmith | Repo Lead |
-| Colson | @csipe4 | Integration Tester |
-| Kevin | @kcastellanos14 | Review coordinator |
-| Robert | @rpleeseberg | Standup Lead |
+| Brady | @TrooperBrady | Standup Lead | 
+| Elijah | @TheElijahSmith | Documentation Lead | 
+| Colson | @csipe4 | Repo Lead | 
+| Kevin | @kcastellanos14 | Integration Tester | 
+| Robert | @rpleeseberg | Review coordinator |
 
 **Communication channel:** TODO — where does this team actually talk? (Discord,
 GroupMe, Slack, a text thread — I don't care which, I care that there is one
@@ -114,7 +114,7 @@ seats for that stretch. Descriptions are from the syllabus.
 Write down how yours will rotate — how often, and in what order. Two sentences
 is plenty.
 
-We will rotate every 2 weeks and the a person's new role will be the one above them on the list and if there is no one above them they move to the bottom role on the list
+We will rotate every 3 weeks and the a person's new role will be the one above them on the list and if there is no one above them they move to the bottom role on the list
 
 > Don't skip this one. The Week 1 rubric grades "roles assigned, documented in
 > README, and rotation plan noted," and the plan is the half people forget.
