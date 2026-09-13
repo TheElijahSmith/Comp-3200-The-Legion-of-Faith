@@ -44,3 +44,51 @@ if __name__ == "__main__":
             print(f"FAIL: {test.__name__}")
 
 #========================================================================================================
+
+#===================================== PART 2 ===========================================================
+
+from part2_multi_output import gradient_descent_outputs
+
+def test_predictions_move_closer_to_targets():
+    input = .65
+    weights = [.3, .2, .9]
+    trues = [0, 1, 0]
+
+    initial_predictions = [input * w for w in weights]
+
+    final_weights, error_history, weight_history = gradient_descent_outputs(input, weights, trues, .1, 10)
+
+    final_predictions = [input * w for w in final_weights]
+
+    for i in range(3):
+        initial_error = abs(initial_predictions[i] - trues[i])
+        final_error = abs(final_predictions[i] - trues[i])
+
+        assert final_error < initial_error
+        
+
+
+def test_weights_change_when_predictions_wrong():
+    input = .65
+    starting_weights = [.3, .2, .9]
+    trues = [0, 1, 0]
+
+    final_weights, error_history, weight_history = gradient_descent_outputs(input, starting_weights.copy(), trues, .1, 1)
+
+    for i in range(3):
+        assert final_weights[i] != starting_weights[i]
+
+
+if __name__ == "__main__":
+
+    tests = [
+        test_predictions_move_closer_to_targets,
+        test_weights_change_when_predictions_wrong
+    ]
+
+    for test in tests:
+        try:
+            test()
+            print(f"PASS: {test.__name__}")
+        except AssertionError:
+            print(f"FAIL: {test.__name__}")
