@@ -87,7 +87,7 @@ from part3_multi_in_out import outer_prod
 def test_outer_prod():
     result = outer_prod([1, 2], [3, 4, 5])
 
-    assert result == ([3, 4, 5],
+    assert result == [[3, 4, 5],
                       [6, 8, 10]]
 
 
