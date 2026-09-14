@@ -81,15 +81,17 @@ def gradient_descent_multi_np(input, weights, true, alpha, iterations):
 
 # Verify both versions agree
 
-plain_weights, plain_errors, plain_hist = gradient_descent_multi(sensing_0, weights, goal, alpha, iterations)
-numpy_weights, numpy_errors, numpy_hist = gradient_descent_multi_np(sensing_0, weights, goal, alpha, iterations)
+if __name__ == '__main__':
 
-print("\nFinal weights (plain vs numpy):")
-for i in range(len(plain_weights)):
-    a = plain_weights[i]
-    b = numpy_weights[i]
-    # abs(a - b) < 1e-10 checks "close enough" instead of exact equality
-    print(f"weight {i}: plain={a:.8f}   numpy={b:.8f}   match={abs(a - b) < 1e-10}")
+    plain_weights, plain_errors, plain_hist = gradient_descent_multi(sensing_0, weights, goal, alpha, iterations)
+    numpy_weights, numpy_errors, numpy_hist = gradient_descent_multi_np(sensing_0, weights, goal, alpha, iterations)
+
+    print("\nFinal weights (plain vs numpy):")
+    for i in range(len(plain_weights)):
+        a = plain_weights[i]
+        b = numpy_weights[i]
+        # abs(a - b) < 1e-10 checks "close enough" instead of exact equality
+        print(f"weight {i}: plain={a:.8f}   numpy={b:.8f}   match={abs(a - b) < 1e-10}")
 
 '''
 Which weight changed the most / least, and why:
