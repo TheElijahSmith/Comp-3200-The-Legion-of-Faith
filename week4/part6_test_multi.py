@@ -78,17 +78,53 @@ def test_weights_change_when_predictions_wrong():
     for i in range(3):
         assert final_weights[i] != starting_weights[i]
 
+#========================================================================================================
 
-if __name__ == "__main__":
+#===================================== PART 3 ===========================================================
 
-    tests = [
-        test_predictions_move_closer_to_targets,
-        test_weights_change_when_predictions_wrong
-    ]
 
-    for test in tests:
+
+
+#========================================================================================================
+
+#===================================== PART 4 ===========================================================
+from part4_freeze import gradient_descent_frozen
+
+
+def test_frozen():
+    inputs = [[.5, .7, .8], [1, 1, 1]]
+    trues = [1, -.5]
+    starting_ws = [1, 1, 1]
+    frozen_indices = [[1, 2], [0]]
+    unfrozen_indices = [[0], [1,2]]
+    for i in range(2):
+        final_ws, errors, weights = gradient_descent_frozen(inputs[i], starting_ws, trues[i], 1, 5, frozen_indices[i])
+        for index in frozen_indices[i]:
+            assert starting_ws[index] == final_ws[index]
+        for index in unfrozen_indices[i]:
+            assert starting_ws[index] != final_ws[index]
+        
+
+
+
+#========================================================================================================
+
+#===================================== PART 5 ===========================================================
+
+if __name__ == '__main__':
+    tests = [name for name in dir() if name.startswith('test_')]
+    passed = []
+    failed = []
+    for test_name in sorted(tests):
+        test_func = globals()[test_name]
         try:
-            test()
-            print(f"PASS: {test.__name__}")
-        except AssertionError:
-            print(f"FAIL: {test.__name__}")
+            test_func()
+            passed.append(test_name)
+            print(f' PASS: {test_name}')
+        except AssertionError as e:
+            failed.append(test_name)
+            print(f' FAIL: {test_name} -- {e}')
+    for name in passed:
+        print(f'PASS: {name}')
+    for name in failed:
+        print(f'FAIL: {name}')
