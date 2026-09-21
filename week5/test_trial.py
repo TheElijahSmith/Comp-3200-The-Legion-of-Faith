@@ -3,7 +3,7 @@ import numpy as np
 from part1_single_layer_fails import single_layer_train
 from part2_forward_hidden import relu, forward
 from part3_one_backprop_step import relu2deriv, one_step
-from part4_full_training import train
+from part4_full_training_loop import train
 
 ## ----- Test 1 --------
 def test_relu():
@@ -114,8 +114,8 @@ def test_one_step_reduce_error():
     layer_0, target, weights_0_1, weights_1_2, 0.2
   )
   
-  layer_1_after = relu(layer_0.dot(updated_w01))
-  layer_2_after = layer_1_after.dot(updated_w12)
+  layer_1_after = relu(layer_0.dot(update_w01))
+  layer_2_after = layer_1_after.dot(update_w12)
   
   error_after = np.sum((layer_2_after - target) ** 2)
   
@@ -123,7 +123,7 @@ def test_one_step_reduce_error():
 
 ## ----- Test 7 ------
 def test_full_training_convergence():
-   tells = np.array([
+  tells = np.array([
     [1, 0, 1],
     [0, 1, 1],
     [0, 0, 1],
@@ -137,27 +137,27 @@ def test_full_training_convergence():
     [0]
   ])
 
-weights_0_1, weights_1_2, error_history = train(
-  tells, strike, alpha=0.2, epochs=60, hidden_size=4, seed=1
-)
+  weights_0_1, weights_1_2, error_history = train(
+    tells, strike, alpha=0.2, epochs=60, hidden_size=4, seed=1
+  )
 
-assert error_history[-1] < 1e-2
+  assert error_history[-1] < 1e-2
 
-for i in range(len(tells)):
-  layer_0 = tells[i:i+1]
-  layer_1 = relu(layer_0.dot(weights_0_1))
-  layer_2 = layer_1.dot(weights_1_2)
-  
-  prediction = layer_2[0,0]
-  
-  if strike[i, 0] == 1:
-    assert prediction > 0.5
-  else:
-    assert prediction < 0.5
+  for i in range(len(tells)):
+    layer_0 = tells[i:i+1]
+    layer_1 = relu(layer_0.dot(weights_0_1))
+    layer_2 = layer_1.dot(weights_1_2)
+    
+    prediction = layer_2[0,0]
+    
+    if strike[i, 0] == 1:
+      assert prediction > 0.5
+    else:
+      assert prediction < 0.5
 
 ## ----- Test 8 -----
 def test_determinism():
-   tells = np.array([
+  tells = np.array([
     [1, 0, 1],
     [0, 1, 1],
     [0, 0, 1],
@@ -171,25 +171,33 @@ def test_determinism():
     [0]
   ])
 
-weights_0_1_a, weights_1_2_a, _ = train(
-  tells, strike, alpha=0.2, epochs=60, hidden_size=4, seed=1
-)
+  weights_0_1_a, weights_1_2_a, _ = train(
+    tells, strike, alpha=0.2, epochs=60, hidden_size=4, seed=1
+  )
 
-weights_0_1_b, weights_1_2_b, _ = train(
- tells, strike, alpha=0.2, epochs=60, hidden_size=4, seed=1
-)
+  weights_0_1_b, weights_1_2_b, _ = train(
+    tells, strike, alpha=0.2, epochs=60, hidden_size=4, seed=1
+  )
 
-assert np.allclose(weights_0_1_a, weights_0_1_b, atol=1e-10
-assert np.allclose(weights_1_2_a, weights_1_2_b, atol=1e-10
+  assert np.allclose(weights_0_1_a, weights_0_1_b, atol=1e-10)
+  assert np.allclose(weights_1_2_a, weights_1_2_b, atol=1e-10)
 
 
-if __name__ == "__main__":
-    for name, test in globals().items():
-      if name.startswith("test_") and callable(test):
+if __name__ == '__main__':
+    tests = [name for name in dir() if name.startswith('test_')]
+    passed = []
+    failed = []
+    for test_name in sorted(tests):
+        test_func = globals()[test_name]
         try:
-          test()
-          print(f"PASS: {name}")
-        except Exception as e:
-          print(f"FAIL: {name} -> {e}")
-
+            test_func()
+            passed.append(test_name)
+            print(f' PASS: {test_name}')
+        except AssertionError as e:
+            failed.append(test_name)
+            print(f' FAIL: {test_name} -- {e}')
+    for name in passed:
+        print(f'PASS: {name}')
+    for name in failed:
+        print(f'FAIL: {name}')
   

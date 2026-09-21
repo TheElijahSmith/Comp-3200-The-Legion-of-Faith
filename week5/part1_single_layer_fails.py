@@ -38,10 +38,26 @@ def single_layer_train(tells, strike, alpha, epochs, seed):
     print(" Foot shift, guard drop, exhale ")
     print(weights)
 
-    # Printing final four preds vs goals
+    # init total error
+    total_error = 0
+
+    # Printing final four preds vs goals; also calculate errors
     for i in range(len(tells)):
         pred = tells[i] @ weights.T
         print(f"Pred = {pred}, goal was {strike[i]}")
+
+        #error = delta ^ 2
+        error = (pred - strike[i]) ** 2
+        total_error += error
+
+    return total_error
+
+
+        
+
+
+    
+    
 
 
 """
