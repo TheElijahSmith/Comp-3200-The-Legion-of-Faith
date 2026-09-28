@@ -5,11 +5,12 @@ from part3_build_from_diagram import train_from_diagram
 
 ## Test 1
 def test_refactor_correctness():
-  tells = np.array([
+ tells = np.array([
     [1, 0, 1],
     [0, 1, 1],
+    [0, 0, 1],
     [1, 1, 1]
-  ])
+])
   
   strike = np.array([1, 1, 0, 0])
   
@@ -26,8 +27,9 @@ def test_shape_sanity():
   tells = np.array([
     [1, 0, 1],
     [0, 1, 1],
+    [0, 0, 1],
     [1, 1, 1]
-  ])
+])
   
   strike = np.array([1, 1, 0, 0])
   
@@ -55,14 +57,17 @@ def test_shape_sanity():
   
   assert layer_1_delta.shape == (1, 4)
   assert layer_2_delta.shape == (1, 1)
+  assert weights_0_1.shape == (3, 4)
+  assert weights_1_2.shape == (4, 1)
 
 ## Test 3
 def test_deeper_net_runs():
   tells = np.array([
     [1, 0, 1],
     [0, 1, 1],
+    [0, 0, 1],
     [1, 1, 1]
-  ])
+])
   
   strike = np.array([1, 1, 0, 0])
   
@@ -74,11 +79,12 @@ def test_deeper_net_runs():
 
 ## Test 4
 def test_deeper_net_converges():
-  tells = np.array([
+ tells = np.array([
     [1, 0, 1],
     [0, 1, 1],
+    [0, 0, 1],
     [1, 1, 1]
-  ])
+])
   
   strike = np.array([1, 1, 0, 0])
   
@@ -95,8 +101,9 @@ def test_determinism():
   tells = np.array([
     [1, 0, 1],
     [0, 1, 1],
+    [0, 0, 1],
     [1, 1, 1]
-  ])
+])
   
   strike = np.array([1, 1, 0, 0])
   
@@ -114,9 +121,9 @@ if __name__ == "__main__":
     if name.startswith("test_") and callable(value)
   ]
   for test in tests:
-    try 
+    try: 
       test()
       print(f"PASS: {test.__name__}")
-    except Assertion as e:
+    except AssertionError as e:
       print(f"FAIL: {test.__name__}")
       print(e)
