@@ -5,12 +5,12 @@ from part3_build_from_diagram import train_from_diagram
 
 ## Test 1
 def test_refactor_correctness():
- tells = np.array([
+  tells = np.array([
     [1, 0, 1],
     [0, 1, 1],
     [0, 0, 1],
     [1, 1, 1]
-])
+  ])
   
   strike = np.array([1, 1, 0, 0])
   
@@ -84,17 +84,17 @@ def test_deeper_net_converges():
     [0, 1, 1],
     [0, 0, 1],
     [1, 1, 1]
-])
+ ])
   
-  strike = np.array([1, 1, 0, 0])
+ strike = np.array([1, 1, 0, 0])
   
-  alpha = 0.1
-  epochs = 150
-  seed = 4
+ alpha = 0.1
+ epochs = 150
+ seed = 4
   
-  history = train_from_diagram(tells, strike, alpha=alpha, epochs=epochs, seed=seed)
+ history = train_from_diagram(tells, strike, alpha=alpha, epochs=epochs, seed=seed)
   
-  assert history[-1] < 1e-3
+ assert history[-1] < 1e-3
 
 ## Test 5
 def test_determinism():
