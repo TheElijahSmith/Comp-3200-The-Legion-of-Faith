@@ -83,11 +83,11 @@ other's PRs, so use the real GitHub handle, not a nickname.
 
 | Name | GitHub handle | Role |
 |---|---|---|
-| Brady | @TrooperBrady | Standup Lead | 
-| Elijah | @TheElijahSmith | Documentation Lead | 
-| Colson | @csipe4 | Repo Lead | 
-| Kevin | @kcastellanos14 | Integration Tester | 
-| Robert | @rpleeseberg | Review coordinator |
+| Brady | @TrooperBrady | Review coordinator |
+| Elijah | @TheElijahSmith | Standup Lead |
+| Colson | @csipe4 | Documentation Lead |
+| Kevin | @kcastellanos14 | Repo Lead |
+| Robert | @rpleeseberg | Integration Tester |
 
 **Communication channel:** TODO — where does this team actually talk? (Discord,
 GroupMe, Slack, a text thread — I don't care which, I care that there is one
