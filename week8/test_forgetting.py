@@ -3,7 +3,8 @@ import numpy as np
 from data import load_mnist, one_hot
 from part1_memorize import train
 from part2_early_stopping import train_early_stopping
-from part3_dropout import train_dropout, dropout_step
+from part3_dropout import train_dropout 
+from part3_dropout import dropout_step
 from part4_batching import train_batched
 
 
