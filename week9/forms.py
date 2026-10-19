@@ -31,27 +31,28 @@ def softmax(z):
 
 import matplotlib.pyplot as plt
 
-# Create input values from -6 to 6
-x = np.linspace(-6, 6, 200)
+if __name__ == '__main__':
+  # Create input values from -6 to 6
+  x = np.linspace(-6, 6, 200)
 
-# calculate each activation function
-sigmoid_y = sigmoid(x)
-tanh_y = tanh(x)
-relu_y = relu(x)
+  # calculate each activation function
+  sigmoid_y = sigmoid(x)
+  tanh_y = tanh(x)
+  relu_y = relu(x)
 
-# This will draw all three functions on a single graph
-plt.plot(x, sigmoid_y, label="Sigmoid (0, 1)")
-plt.plot(x, tanh_y, label="Tanh (-1, 1)")
-plt.plot(x, relu_y, label="ReLU [0, infinity)")
+  # This will draw all three functions on a single graph
+  plt.plot(x, sigmoid_y, label="Sigmoid (0, 1)")
+  plt.plot(x, tanh_y, label="Tanh (-1, 1)")
+  plt.plot(x, relu_y, label="ReLU [0, infinity)")
 
-# Addings labels
-plt.xlabel("Input (x)")
-plt.ylabel("Output")
-plt.title("Activation Functions")
-plt.legend()
-plt.grid(True)
+  # Addings labels
+  plt.xlabel("Input (x)")
+  plt.ylabel("Output")
+  plt.title("Activation Functions")
+  plt.legend()
+  plt.grid(True)
 
-# code to save the graph
-plt.savefig("forms_plot.png")
-plt.show()
+  # code to save the graph
+  plt.savefig("forms_plot.png")
+  plt.show()
 
