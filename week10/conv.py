@@ -12,4 +12,4 @@ def get_patches(layer):
   expanded = np.concatenate(patches, axis=1)
   es = expanded.shape
 
-  return expanded.reshaoe(es[0] = es[1], 9), es
+  return expanded.reshape(es[0] * es[1], 9), es
