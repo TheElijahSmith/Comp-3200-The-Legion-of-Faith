@@ -34,18 +34,13 @@ def train_step(layer_0, Y_batch, kernels, W_1_2, mask, alpha):
     # Backpropagation
     # =====================
 
-    delta_2 = (layer_2 - Y_batch) / layer_0.shape[0]
-
-    delta_1 = delta_2.dot(W_1_2.T) * slope
-
-    delta_1 *= mask * 2
-
+    delta_2 = (layer_2 - Y_batch) / layer_0.shape[0] # batch avg
+    delta_1 = delta_2.dot(W_1_2.T) * slope # slope saved before mask
+    delta_1 *= mask * 2 # forward was * mask * 2
     W_1_2 -= alpha * layer_1.T.dot(delta_2)
 
-    delta_1_reshaped = delta_1.reshape(kernel_out.shape)
-
-    k_update = flat_patches.T.dot(delta_1_reshaped)
-
+    delta_1_reshaped = delta_1.reshape(kernel_out.shape) # (batch*676, 16)
+    k_update = flat_patches.T.dot(delta_1_reshaped) # (9, 16)
     kernels -= alpha * k_update
 
     return k_update
