@@ -66,7 +66,7 @@ def main():
 
     np.random.seed(1)
 
-    alpha = 2
+    alpha = .02
     epochs = 300
     batch_size = 128
 
