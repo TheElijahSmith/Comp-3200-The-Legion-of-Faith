@@ -165,7 +165,7 @@ def main():
 
     plt.grid(True)
 
-    plt.savefig("week10_conv_plot.png")
+    plt.savefig("week10/conv_plot.png")
     plt.show()
 
 
