@@ -55,3 +55,13 @@ def train_fillblank(input_dataset, vocab, word2index, epochs=2, alpha=0.05, hidd
     np.save("weights_0_1_fillblank.npy", weights_0_1)
 
     return weights_0_1, weights_1_2
+
+
+
+
+if __name__ == "__main__":
+    from preprocess import input_dataset, vocab, word2index
+
+    print("Starting training...")
+    train_fillblank(input_dataset, vocab, word2index)
+    print("Training complete!")
