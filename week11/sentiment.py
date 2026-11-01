@@ -1,5 +1,6 @@
 import numpy as np
 import pickle
+from preprocess import reviews, labels, vocab, word2index
 
 def sigmoid(x):
   return 1 / (1 + np.exp(-x))
@@ -12,7 +13,7 @@ hidden_size = 100
 weights_0_1 = 0.2 * np.random.random((len(vocab), hidden_size)) - 0.1
 weights_1_2 = 0.2 * np.random.random((hidden_size, 1)) - 0.1
 
-def train(xm y):
+def train(x, y):
   #Forward pass on calculating the hidden lyaer
   layer_1 = sigmoid(np.sum(weights_0_1[x], axis=0))
   #forward pass on calculating the prediction
@@ -30,6 +31,7 @@ def train(xm y):
 
 #Code to train the network
 for iteration in range(iterations):
+  correct = 0
   for i in range(24000):
     x = reviews[i]
     y = labels[i]
@@ -49,7 +51,7 @@ for iteration in range(iterations):
         correct = 0
 
 def predict(x):
-  layer_1 = sigmoid(np.sum(weights_0_1[x}, axis=0))
+  layer_1 = sigmoid(np.sum(weights_0_1[x], axis=0))
   
   layer_2 = sigmoid(np.dot(layer_1, weights_1_2))
   
@@ -63,8 +65,9 @@ for i in range(24000, 25000):
   prediction = predict(x)
   if (prediction[0] >= 0.5) == (y == 1):
     correct += 1
-    test_accuracy = correct / 1000
-    print(f"Test accuracy: {test_accuracy:.2%}")
+    
+test_accuracy = correct / 1000
+print(f"Test accuracy: {test_accuracy:.2%}")
 
 with open("sentiment_data.pkl", "wb") as file:
   pickle.dump({
