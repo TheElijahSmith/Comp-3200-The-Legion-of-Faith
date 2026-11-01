@@ -1,6 +1,6 @@
 import numpy as np
 import pickle
-from preprocess import reviews, labels, vocab, word2index
+from preprocess import reviews, labels, vocab, word2index, input_dataset, labels_to_binary
 
 def sigmoid(x):
   return 1 / (1 + np.exp(-x))
@@ -33,8 +33,8 @@ def train(x, y):
 for iteration in range(iterations):
   correct = 0
   for i in range(24000):
-    x = reviews[i]
-    y = labels[i]
+    x = input_dataset[i]
+    y = labels_to_binary[i]
     
     prediction = train(x, y)
     
@@ -60,8 +60,8 @@ def predict(x):
 # Code to evaluate the network on the test set
 correct = 0
 for i in range(24000, 25000):
-  x = reviews[i]
-  y = labels[i]
+  x = input_dataset[i]
+  y = labels_to_binary[i]
   prediction = predict(x)
   if (prediction[0] >= 0.5) == (y == 1):
     correct += 1
