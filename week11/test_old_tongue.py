@@ -103,7 +103,6 @@ def test_sentiment():
             correct += 1
             
     test_accuracy = correct / 1000
-    print(test_accuracy)
     assert test_accuracy > .6, "Sentiment train not training above random chance"
 
 
