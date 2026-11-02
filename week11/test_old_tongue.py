@@ -135,10 +135,8 @@ if __name__ == '__main__':
         try:
             test_func()
             passed.append(test_name)
-            print(f' PASS: {test_name}')
         except AssertionError as e:
             failed.append(test_name)
-            print(f' FAIL: {test_name} -- {e}')
     for name in passed:
         print(f'PASS: {name}')
     for name in failed:
