@@ -53,8 +53,6 @@ def train_fillblank(input_dataset, vocab, word2index, epochs=2, alpha=0.05, hidd
                 weights_0_1[context] -= layer_1_delta * alpha
                 weights_1_2[target_samples] -= np.outer(layer_2_delta, layer_1) * alpha
 
-    # 4. Save trained weights to file
-    np.save("weights_0_1_fillblank.npy", weights_0_1)
 
     return weights_0_1, weights_1_2, layer_2, layer_2_target
 
