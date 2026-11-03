@@ -41,14 +41,14 @@ for iteration in range(iterations):
     if (prediction[0] >= 0.5) == (y == 1):
       correct += 1
       
-      if (i + 1) % 1000 == 0:
-        accuracy = correct / 1000
-        print(
-          f"Iteration {iteration + 1}, "
-          f"Review {i + 1}, "
-          f"Accuracy: {accuracy:.2%}"
-        )
-        correct = 0
+    if (i + 1) % 1000 == 0:
+      accuracy = correct / 1000
+      print(
+        f"Iteration {iteration + 1}, "
+        f"Review {i + 1}, "
+        f"Accuracy: {accuracy:.2%}"
+      )
+      correct = 0
 
 def predict(x):
   layer_1 = sigmoid(np.sum(weights_0_1[x], axis=0))
@@ -57,24 +57,28 @@ def predict(x):
   
   return layer_2
 
-# Code to evaluate the network on the test set
-correct = 0
-for i in range(24000, 25000):
-  x = input_dataset[i]
-  y = labels_to_binary[i]
-  prediction = predict(x)
-  if (prediction[0] >= 0.5) == (y == 1):
-    correct += 1
-    
-test_accuracy = correct / 1000
-print(f"Test accuracy: {test_accuracy:.2%}")
 
-with open("sentiment_data.pkl", "wb") as file:
-  pickle.dump({
-    "weights_0_1": weights_0_1,
-    "word2index": word2index,
-    "vocab": vocab
-  }, file)
+
+if __name__ == "__main__":
+
+  # Code to evaluate the network on the test set
+  correct = 0
+  for i in range(24000, 25000):
+    x = input_dataset[i]
+    y = labels_to_binary[i]
+    prediction = predict(x)
+    if (prediction[0] >= 0.5) == (y == 1):
+      correct += 1
+
+  test_accuracy = correct / 1000
+  print(f"Test accuracy: {test_accuracy:.2%}")
+
+  with open("sentiment_data.pkl", "wb") as file:
+    pickle.dump({
+      "weights_0_1": weights_0_1,
+      "word2index": word2index,
+      "vocab": vocab
+    }, file)
 
 
 
