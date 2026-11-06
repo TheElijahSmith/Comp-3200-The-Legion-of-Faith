@@ -1,5 +1,5 @@
 with open("week12/data/qa1_train.txt") as f:
-    lines = f.readlines()[:3000] # open file and read first 1010 lines
+    lines = f.readlines()[:1010] # open file and read first 1010 lines
 print(len(lines))
 
 tokens = []
