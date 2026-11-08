@@ -5,12 +5,13 @@ print(len(lines))
 tokens = []
 
 for line in lines:
-    words = line.lower().strip().split() # lowercase, strip trailing newlines, and split on whitespace
+    words = line.lower().strip().split(' ') # lowercase, strip trailing newlines, and split on whitespace
     words = words[1:] # remove line number
     tokens.append(words)
 
 # test. If this works, we should see line 1 of qa1_train.text written out in lower case
 print(tokens[0])
+
 
 # same setup as week 11
 vocab = set()
@@ -24,6 +25,7 @@ vocab = sorted(vocab)
 # test. Should get 82 and the full list. *** Note made after tests, read the comments at the BOTTOM of the file
 print("Vocabulary Size:", len(vocab))
 print(sorted(vocab))
+
 
 
 # same as week 11
