@@ -15,7 +15,7 @@ def train(alpha, iters, TRAIN_N):
     perplexity_log = []
     
     # Main loop
-    for it in iters:
+    for it in range(iters):
         # Get the current sentence. it % train_n will cycle through the first TRAIN_N lines
         #  however many times it/TRAIN_N is
         sent = words2indices(tokens[it % TRAIN_N])
@@ -25,7 +25,11 @@ def train(alpha, iters, TRAIN_N):
 
         # every 1000 iters, add the current iteration and perplexity to a log of the training
         if (it+1) % 1000 == 0:
-            perplexity_log.append((iter, perplexity))
-            print((iter, perplexity))
+            perplexity_log.append((it+1, perplexity))
+            print((it+1, perplexity))
 
-    np.savez("perplexity_log.csv", perplexity_log)
+    # save the log of the perplexities
+    np.savez("week12/perplexity_log.csv", perplexity_log)
+
+if __name__ == "__main__":
+    train(alpha, iterations, TRAIN_N)

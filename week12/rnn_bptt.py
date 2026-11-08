@@ -32,12 +32,12 @@ def train_step(sent, embed, recurrent, start, decoder, one_hot, alpha):
   step_size = alpha / len(sent)
   
   # update the starting hidden state
-  start -= layers[1]['hidden_delta'] * step_size
+  start -= layers[0]['hidden_delta'] * step_size # here
   
   for layer_idx, layer in enumerate(layers[1:]):
     
     decoder -= np.outer(
-      layers[layer_idx]['hidden'],
+      layer['hidden'], # here
       layer['output_delta']
     ) * step_size
     
