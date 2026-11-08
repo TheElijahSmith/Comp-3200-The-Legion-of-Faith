@@ -18,7 +18,7 @@ def train(alpha, iters, TRAIN_N):
     for it in range(iters):
         # Get the current sentence. it % train_n will cycle through the first TRAIN_N lines
         #  however many times it/TRAIN_N is
-        sent = words2indices(tokens[it % TRAIN_N])
+        sent = words2indices(tokens[it % TRAIN_N][1:])
 
         # train the model this step and get perplexity
         perplexity = train_step(sent, embed, recurrent, start, decoder, one_hot, alpha)
@@ -30,6 +30,14 @@ def train(alpha, iters, TRAIN_N):
 
     # save the log of the perplexities
     np.savez("week12/perplexity_log.csv", perplexity_log)
+
+    np.savez(
+        "week12/trained_weights.npz",
+        embed=embed,
+        recurrent=recurrent,
+        start=start,
+        decoder=decoder
+    )
 
 if __name__ == "__main__":
     train(alpha, iterations, TRAIN_N)
