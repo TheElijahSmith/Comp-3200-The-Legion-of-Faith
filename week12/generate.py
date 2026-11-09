@@ -12,7 +12,7 @@ start = weights["start"]
 decoder = weights["decoder"]
 
 # select three statements
-test_indices = [1000, 1003, 1006]
+test_indices = [1000, 1004, 1005]
 
 for i in test_indices:
     sentence = tokens[i][1:]

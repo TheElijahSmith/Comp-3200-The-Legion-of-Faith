@@ -29,7 +29,7 @@ def train(alpha, iters, TRAIN_N):
             print((it+1, perplexity))
 
     # save the log of the perplexities
-    np.savez("week12/perplexity_log.csv", perplexity_log)
+    np.savetxt('week12/perplexity_log.csv', perplexity_log, delimiter=',')
 
     np.savez(
         "week12/trained_weights.npz",
