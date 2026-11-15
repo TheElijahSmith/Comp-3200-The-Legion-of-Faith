@@ -45,6 +45,34 @@ class Sequential(Layer):
             params += l.get_parameters() # gather every layer's weights
         return params
 
+
+# tanh activation layer
+class Tanh(Layer):
+    def __init__(self):
+        super().__init__()
+
+    def forward(self, input):
+        return input.tanh()
+
+
+# sigmoid activation layer
+class Sigmoid(Layer):
+    def __init__(self):
+        super().__init__()
+
+    def forward(self, input):
+        return input.sigmoid()
+
+
+# mean squared error loss layer
+class MSELoss(Layer):
+    def __init__(self):
+        super().__init__()
+
+    def forward(self, pred, target):
+        return ((pred - target) * (pred - target)).sum(0)
+
+
 # Main function meant to test the above code
 if __name__ == "__main__":
 

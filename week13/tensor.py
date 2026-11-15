@@ -106,6 +106,27 @@ class Tensor:
         else:
             return Tensor(new_data)
 
+
+    def tanh(self):
+        # use tanh on every element
+        out = np.tanh(self.data)
+        if self.autograd:
+            return Tensor(out, autograd=True,
+                        creators=[self], creation_op="tanh")
+        else:
+            return Tensor(out)
+
+
+    def sigmoid(self):
+        # use sigmoid on every element
+        out = 1 / (1 + np.exp(-self.data))
+        if self.autograd:
+            return Tensor(out, autograd=True,
+                        creators=[self], creation_op="sigmoid")
+        else:
+            return Tensor(out)
+    
+
     # These two funcs do the same thing: return self.data as str not object address
     def __repr__(self):
         return str(self.data)
@@ -174,6 +195,18 @@ class Tensor:
             elif self.creation_op == "transpose":
                 # Transpose the gradient back to match the creator's original shape
                 self.creators[0].backward(self.grad.transpose(), self)
+
+            elif self.creation_op == "tanh":
+                # derivative of tanh is 1 - tanh(x)^2
+                out = self.data
+                grad = self.grad.data * (1 - out * out)
+                self.creators[0].backward(Tensor(grad), self)
+
+            elif self.creation_op == "sigmoid":
+                # derivative of sigmoid is sigmoid(x) * (1 - sigmoid(x))
+                out = self.data
+                grad = self.grad.data * (out * (1 - out))
+                self.creators[0].backward(Tensor(grad), self)
 
             elif "sum" in self.creation_op:
                 # Read the summed axis back out and expand the gradient along that dim
