@@ -36,7 +36,7 @@ W2 = Tensor(np.random.randn(3, 1), autograd=True)
 
 
 # Create an optimizer for the four trainable tensors
-optim = SGD(parameters=[W1, W2], alpha=0.1)
+optim = SGD(parameters=[W1, W2], alpha=0.01)
 
 
 # Train the MLP for 10 iterations
