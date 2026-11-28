@@ -226,11 +226,11 @@ class Tensor:
                 grad = np.zeros_like(self.creators[0].data)
                 indices_ = self.index_select_indices.data.flatten()
                 grad_ = self.grad.data.reshape(len(indices_), -1)
-                for i in (len(indices_)):
-                    grad[indices_[i]] += grad[i]
+               for i in range(len(indices_)):
+                   grad[indices_[i]] += grad_[i]
                 self.creators[0].backward(Tensor(grad), self)
 
-            elif self.creation_op == "cross_entrophy":
+            elif self.creation_op == "cross_entropy":
                 dx = (self.softmax_output - self.target_dist) / len(self.target_dist)
                 self.creators[0].backward(Tensor(dx), self)
 
